@@ -34,5 +34,29 @@ namespace OpenDirectoryHelper.Properties {
                 this["CurrentSettingFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastLoadPath {
+            get {
+                return ((string)(this["LastLoadPath"]));
+            }
+            set {
+                this["LastLoadPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastSavePath {
+            get {
+                return ((string)(this["LastSavePath"]));
+            }
+            set {
+                this["LastSavePath"] = value;
+            }
+        }
     }
 }

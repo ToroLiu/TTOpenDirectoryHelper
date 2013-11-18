@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenDirectoryHelper.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,9 +16,10 @@ namespace OpenDirectoryHelper
         public mainForm()
         {
             InitializeComponent();
+            ResetListView();
         }
-        private void InitializeListView() { 
-            
+        private void ResetListView() {
+            this.olvDirItems.SetObjects(Context.Current.DirItemList);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -29,11 +31,33 @@ namespace OpenDirectoryHelper
         private void btnLoad_Click(object sender, EventArgs e)
         {
             // load settings
+            string loadDir = Context.Current.GetLastLoadPath();
+
+            var dlg = new OpenFileDialog();
+            dlg.Filter = Context.FileFilter;
+            dlg.InitialDirectory = loadDir;
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                string path = dlg.FileName;
+                Context.Current.LoadSetting(path);
+                Context.Current.SetLastLoadPath(path);
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             // save setting to files.
+            string saveDir = Context.Current.GetLastSavePath();
+            var dlg = new SaveFileDialog();
+            dlg.Filter = Context.FileFilter;
+            dlg.InitialDirectory = saveDir;
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                string path = dlg.FileName;
+                Context.Current.SaveSetting(path);
+                Context.Current.SetLastSavePath(path);
+            }
+            
         }
         #endregion
 
@@ -41,17 +65,48 @@ namespace OpenDirectoryHelper
         private void btnAdd_Click(object sender, EventArgs e)
         {
             // add dir item
+            DirItemConfigureForm child = new DirItemConfigureForm();
+            if (child.ShowDialog() != DialogResult.OK)
+                return;
+            
+            var item = child.TheItem;
+            Context.Current.AddDirItem(item);
+            ResetListView();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             // edit selected dir item
+            DirItem selItem = this.olvDirItems.SelectedObject as DirItem;
+            if (selItem == null)
+                return;
+
+            DirItemConfigureForm child = new DirItemConfigureForm(selItem);
+            if (child.ShowDialog() != DialogResult.OK)
+                return;
+
+            ResetListView();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
             // remove selected dir item.
+            DirItem selItem = this.olvDirItems.SelectedObject as DirItem;
+            if (selItem == null)
+                return;
+            
+            Context.Current.RemoveDirItem(selItem);
+            ResetListView();
         }
         #endregion
+
+        private void olvDirItems_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            DirItem selItem = this.olvDirItems.SelectedObject as DirItem;
+            if (selItem == null)
+                return;
+
+            Context.Current.OpenDirItem(selItem);
+        }
     }
 }

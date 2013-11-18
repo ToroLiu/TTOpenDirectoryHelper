@@ -16,15 +16,17 @@ namespace OpenDirectoryHelper
     {
         public DirItem TheItem { get; set; }        
 
-        public DirItemConfigureForm()
+        public DirItemConfigureForm() : this(null) {}
+        public DirItemConfigureForm(DirItem item) 
         {
+            this.TheItem = item;
+
             InitializeComponent();
             InitializeComboItems();
             InitializeModel();
         }
 
-        private void InitializeComboItems() {
-            List<ComboItem> itemList = new List<ComboItem>() { 
+        private static readonly List<ComboItem> _itemlist = new List<ComboItem>() { 
                 new ComboItem(ES.CommonApplicationData, "CommonApplicationData"),
                 new ComboItem(ES.CommonDesktopDirectory, "CommonDesktopDirectory"),
                 new ComboItem(ES.CommonDocuments, "CommonDocuments"),
@@ -39,7 +41,7 @@ namespace OpenDirectoryHelper
                 new ComboItem(ES.Favorites, "Favorites"),
                 new ComboItem(ES.LocalApplicationData, "LocalApplicationData"),
                 new ComboItem(ES.MyComputer, "MyComputer"),
-                new ComboItem(ES.MyDocuments, "MyDocuments"),
+                new ComboItem(ES.MyDocuments, "MyDocuments"),   ///< Default
                 new ComboItem(ES.ProgramFiles, "ProgramFiles"),
                 new ComboItem(ES.ProgramFilesX86, "ProgramFilesX86"),
                 new ComboItem(ES.Programs, "Programs"),
@@ -47,6 +49,9 @@ namespace OpenDirectoryHelper
                 new ComboItem(ES.SystemX86, "SystemX86"),
                 new ComboItem(ES.Windows, "Windows"),
             };
+
+        private void InitializeComboItems() {
+            List<ComboItem> itemList = _itemlist;
 
             cboSpecialFolder.Items.Clear();
             foreach (var item in itemList)
@@ -60,12 +65,59 @@ namespace OpenDirectoryHelper
                 TheItem = new DirItem();
             }
 
+            UpdateTheItemToUI();
+        }
+
+        private void UpdateTheItemToUI() {
             this.txtProjectName.Text = TheItem.ProjectName;
             this.txtTitle.Text = TheItem.Title;
             this.txtDescription.Text = TheItem.Description;
-            this.chkEnableSpecialFolder.Checked = TheItem.Path.UseSpecialFolder;
-            //this.cboSpecialFolder.SelectedValue
             this.txtPathName.Text = TheItem.Path.PathStr;
+
+            this.chkEnableSpecialFolder.Checked = TheItem.Path.UseSpecialFolder;
+
+            int selIndex = GetSelectedIndex(TheItem.Path.SpecialFolder);
+            if (selIndex != -1)
+            {
+                this.cboSpecialFolder.SelectedIndex = selIndex;
+            } 
+        }
+        private void UpdateTheItemFromUI() {
+            TheItem.ProjectName = this.txtProjectName.Text;
+            TheItem.Title = this.txtTitle.Text;
+            TheItem.Description = this.txtDescription.Text;
+
+            TheItem.Path.PathStr = this.txtPathName.Text;
+
+            bool enableSF = TheItem.Path.UseSpecialFolder = this.chkEnableSpecialFolder.Checked;
+            if (enableSF)
+            {
+                int selIndex = this.cboSpecialFolder.SelectedIndex;
+                if (selIndex != -1)
+                {
+                    var item = this.cboSpecialFolder.SelectedItem as ComboItem;
+                    TheItem.Path.SpecialFolder = item.Value;
+                }
+                else
+                {
+                    TheItem.Path.SpecialFolder = PathItem.DefaultSpecialFolder;
+                }
+            }
+        }
+
+
+        private int GetSelectedIndex(Environment.SpecialFolder value)
+        {
+            int count = _itemlist.Count();
+            for (int i = 0; i < count; ++i)
+            {
+                ComboItem itm = _itemlist[i];
+                if (itm.Value != value)
+                    continue;
+
+                return i;
+            }
+            return -1;
         }
 
         private void chkEnableSpecialFolder_CheckedChanged(object sender, EventArgs e)
@@ -75,6 +127,7 @@ namespace OpenDirectoryHelper
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            UpdateTheItemFromUI();
 
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }

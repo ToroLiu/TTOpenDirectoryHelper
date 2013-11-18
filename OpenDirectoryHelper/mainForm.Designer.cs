@@ -62,15 +62,18 @@
             this.olvDirItems.TabIndex = 0;
             this.olvDirItems.UseCompatibleStateImageBehavior = false;
             this.olvDirItems.View = System.Windows.Forms.View.Details;
+            this.olvDirItems.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.olvDirItems_MouseDoubleClick);
             // 
             // colProjectName
             // 
             this.colProjectName.AspectName = "ProjectName";
             this.colProjectName.CellPadding = null;
             this.colProjectName.IsEditable = false;
+            this.colProjectName.MaximumWidth = 120;
+            this.colProjectName.MinimumWidth = 120;
             this.colProjectName.Text = "Project";
             this.colProjectName.ToolTipText = "The project name";
-            this.colProjectName.Width = 98;
+            this.colProjectName.Width = 120;
             // 
             // colTitle
             // 
@@ -78,9 +81,11 @@
             this.colTitle.CellPadding = null;
             this.colTitle.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.colTitle.IsEditable = false;
+            this.colTitle.MaximumWidth = 180;
+            this.colTitle.MinimumWidth = 180;
             this.colTitle.Text = "Title";
             this.colTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.colTitle.Width = 109;
+            this.colTitle.Width = 180;
             // 
             // colDesc
             // 
@@ -88,9 +93,11 @@
             this.colDesc.CellPadding = null;
             this.colDesc.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.colDesc.IsEditable = false;
+            this.colDesc.MaximumWidth = 260;
+            this.colDesc.MinimumWidth = 260;
             this.colDesc.Text = "Description";
             this.colDesc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.colDesc.Width = 328;
+            this.colDesc.Width = 260;
             // 
             // btnSave
             // 
@@ -169,6 +176,7 @@
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.olvDirItems);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "mainForm";
             this.Text = "Directory Helper Tool";
             ((System.ComponentModel.ISupportInitialize)(this.olvDirItems)).EndInit();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,10 +16,16 @@ namespace OpenDirectoryHelper.Models
 
         public DirItem()
         {
-            ProjectName = "Sample Project";
-            Title = "Sample Title";
-            Description = "Sample Description";
+            ProjectName = "ProjectName";
+            Title = "MyDocuments";
+            Description = "Open MyDocuments.";
             Path = new PathItem();
+        }
+
+        public string GetPath() {
+            Debug.Assert(this.Path != null);
+
+            return Path.GetPath();
         }
     }
 }
