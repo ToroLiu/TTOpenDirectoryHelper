@@ -20,6 +20,15 @@ namespace OpenDirectoryHelper.Models
             string curPath = Settings.Default.CurrentSettingFile;
             LoadSetting(curPath);
         }
+        public void SaveCurrentSetting() {
+            string curPath = Settings.Default.CurrentSettingFile;
+            if (string.IsNullOrEmpty(curPath))
+            {
+                string dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                curPath = Path.Combine(dir, "open_dir_helper.odh");
+                SaveSetting(curPath);
+            }
+        }
 
         public void LoadSetting(string filePath) {
             bool isExist = File.Exists(filePath);
@@ -32,13 +41,10 @@ namespace OpenDirectoryHelper.Models
             using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
             {
                 string json = sr.ReadToEnd();
-                this.DirItemList = JsonConvert.DeserializeObject<List<DirItem>>(json);
+
+                var list =  JsonConvert.DeserializeObject<List<DirItem>>(json);
+                list.ForEach(itm => this.DirItemList.Add(itm));
             }
-
-            Settings.Default.CurrentSettingFile = filePath;
-            Settings.Default.Save();
-
-            this.HasSettingFile = true;
         }
 
         public void SaveSetting(string filePath)

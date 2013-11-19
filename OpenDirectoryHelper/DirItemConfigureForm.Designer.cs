@@ -143,7 +143,7 @@
             this.cboSpecialFolder.FormattingEnabled = true;
             this.cboSpecialFolder.Location = new System.Drawing.Point(198, 150);
             this.cboSpecialFolder.Name = "cboSpecialFolder";
-            this.cboSpecialFolder.Size = new System.Drawing.Size(121, 23);
+            this.cboSpecialFolder.Size = new System.Drawing.Size(277, 23);
             this.cboSpecialFolder.TabIndex = 7;
             // 
             // DirItemConfigureForm

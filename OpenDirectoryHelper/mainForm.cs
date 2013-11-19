@@ -24,6 +24,9 @@ namespace OpenDirectoryHelper
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            // Save current settings....
+            Context.Current.SaveCurrentSetting();
+
             Application.Exit();
         }
 

@@ -13,7 +13,7 @@ namespace OpenDirectoryHelper.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public PathItem Path { get; set; }
-
+        
         public DirItem()
         {
             ProjectName = "ProjectName";
