@@ -81,11 +81,9 @@
             this.colTitle.CellPadding = null;
             this.colTitle.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.colTitle.IsEditable = false;
-            this.colTitle.MaximumWidth = 180;
-            this.colTitle.MinimumWidth = 180;
+            this.colTitle.MinimumWidth = 100;
             this.colTitle.Text = "Title";
-            this.colTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.colTitle.Width = 180;
+            this.colTitle.Width = 150;
             // 
             // colDesc
             // 
@@ -93,10 +91,8 @@
             this.colDesc.CellPadding = null;
             this.colDesc.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.colDesc.IsEditable = false;
-            this.colDesc.MaximumWidth = 260;
-            this.colDesc.MinimumWidth = 260;
+            this.colDesc.MinimumWidth = 100;
             this.colDesc.Text = "Description";
-            this.colDesc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.colDesc.Width = 260;
             // 
             // btnSave
@@ -106,7 +102,7 @@
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "&Save";
-            this.myToolTip.SetToolTip(this.btnSave, "Save current settings");
+            this.myToolTip.SetToolTip(this.btnSave, "Save current settings to a file.");
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -161,6 +157,7 @@
             this.btnLoad.Size = new System.Drawing.Size(75, 23);
             this.btnLoad.TabIndex = 1;
             this.btnLoad.Text = "&Load";
+            this.myToolTip.SetToolTip(this.btnLoad, "Load settings from a file and append those to current list.");
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 

@@ -119,16 +119,17 @@ namespace OpenDirectoryHelper.Models
         #endregion
 
         #region Utility Functions
-        public void OpenDirItem(DirItem item)
+        public bool OpenDirItem(DirItem item)
         {
             // Get path from item
             string path = item.GetPath();
 
             bool exist = Directory.Exists(path);
             if (!exist)
-                return;
+                return false;
 
             Process.Start(path);
+            return true;
         }
         #endregion
 

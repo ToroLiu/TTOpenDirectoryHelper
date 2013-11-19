@@ -44,6 +44,8 @@ namespace OpenDirectoryHelper
                 string path = dlg.FileName;
                 Context.Current.LoadSetting(path);
                 Context.Current.SetLastLoadPath(path);
+
+                ResetListView();
             }
         }
 
@@ -109,7 +111,11 @@ namespace OpenDirectoryHelper
             if (selItem == null)
                 return;
 
-            Context.Current.OpenDirItem(selItem);
+            bool done = Context.Current.OpenDirItem(selItem);
+            if (!done)
+            {
+                MessageBox.Show("Failed to open the directory. It is non-existed.");
+            }
         }
     }
 }
