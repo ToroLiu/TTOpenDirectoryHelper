@@ -43,7 +43,20 @@ namespace OpenDirectoryHelper.Models
                 string json = sr.ReadToEnd();
 
                 var list =  JsonConvert.DeserializeObject<List<DirItem>>(json);
-                list.ForEach(itm => this.DirItemList.Add(itm));
+                // 需要過濾重覆的東西。
+                HashSet<string> curSet = new HashSet<string>();
+                foreach (var cur in this.DirItemList)
+                {
+                    curSet.Add(cur.DistinctPattern());
+                }
+
+                list.ForEach(itm => {
+                    string dp = itm.DistinctPattern();
+                    if (curSet.Contains(dp) == false)
+                    {
+                        this.DirItemList.Add(itm);
+                    }
+                });
             }
         }
 
