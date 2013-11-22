@@ -57,6 +57,12 @@ namespace OpenDirectoryHelper.Models
                         this.DirItemList.Add(itm);
                     }
                 });
+
+                if (string.IsNullOrEmpty(Settings.Default.CurrentSettingFile))
+                {
+                    Settings.Default.CurrentSettingFile = filePath;
+                    Settings.Default.Save();
+                }
             }
         }
 

@@ -15,6 +15,8 @@ namespace OpenDirectoryHelper
     {
         public mainForm()
         {
+            Context.Current.LoadCurrentSetting();
+
             InitializeComponent();
             ResetListView();
         }

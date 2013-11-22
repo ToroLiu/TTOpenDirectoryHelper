@@ -76,7 +76,7 @@
             this.btnCancel.Location = new System.Drawing.Point(400, 309);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 1;
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "&Cancel";
             this.myToolTip.SetToolTip(this.btnCancel, "Give up and leave this dialog.");
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -87,7 +87,7 @@
             this.btnOK.Location = new System.Drawing.Point(303, 309);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 1;
+            this.btnOK.TabIndex = 6;
             this.btnOK.Text = "&OK";
             this.myToolTip.SetToolTip(this.btnOK, "Save current configuration and leave this dialog.");
             this.btnOK.UseVisualStyleBackColor = true;
@@ -98,7 +98,7 @@
             this.txtProjectName.Location = new System.Drawing.Point(198, 25);
             this.txtProjectName.Name = "txtProjectName";
             this.txtProjectName.Size = new System.Drawing.Size(277, 25);
-            this.txtProjectName.TabIndex = 2;
+            this.txtProjectName.TabIndex = 0;
             this.myToolTip.SetToolTip(this.txtProjectName, "Project name of item.");
             // 
             // txtTitle
@@ -106,7 +106,7 @@
             this.txtTitle.Location = new System.Drawing.Point(198, 61);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(277, 25);
-            this.txtTitle.TabIndex = 2;
+            this.txtTitle.TabIndex = 1;
             this.myToolTip.SetToolTip(this.txtTitle, "Item title.");
             // 
             // chkEnableSpecialFolder
@@ -134,7 +134,7 @@
             this.txtPathName.Location = new System.Drawing.Point(198, 271);
             this.txtPathName.Name = "txtPathName";
             this.txtPathName.Size = new System.Drawing.Size(277, 25);
-            this.txtPathName.TabIndex = 6;
+            this.txtPathName.TabIndex = 5;
             this.myToolTip.SetToolTip(this.txtPathName, "The path ");
             // 
             // cboSpecialFolder
@@ -144,7 +144,7 @@
             this.cboSpecialFolder.Location = new System.Drawing.Point(198, 231);
             this.cboSpecialFolder.Name = "cboSpecialFolder";
             this.cboSpecialFolder.Size = new System.Drawing.Size(277, 23);
-            this.cboSpecialFolder.TabIndex = 7;
+            this.cboSpecialFolder.TabIndex = 4;
             // 
             // txtDescription
             // 

@@ -100,7 +100,7 @@
             this.btnSave.Location = new System.Drawing.Point(102, 324);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 1;
+            this.btnSave.TabIndex = 2;
             this.btnSave.Text = "&Save";
             this.myToolTip.SetToolTip(this.btnSave, "Save current settings to a file.");
             this.btnSave.UseVisualStyleBackColor = true;
@@ -111,7 +111,7 @@
             this.btnAdd.Location = new System.Drawing.Point(222, 324);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 1;
+            this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "&Add";
             this.myToolTip.SetToolTip(this.btnAdd, "Add a new item.");
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -122,7 +122,7 @@
             this.btnEdit.Location = new System.Drawing.Point(303, 324);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 1;
+            this.btnEdit.TabIndex = 4;
             this.btnEdit.Text = "&Edit";
             this.myToolTip.SetToolTip(this.btnEdit, "Edit selected item.");
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -133,7 +133,7 @@
             this.btnRemove.Location = new System.Drawing.Point(384, 324);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
-            this.btnRemove.TabIndex = 1;
+            this.btnRemove.TabIndex = 5;
             this.btnRemove.Text = "&Remove";
             this.myToolTip.SetToolTip(this.btnRemove, "Remove selected item.");
             this.btnRemove.UseVisualStyleBackColor = true;
@@ -144,7 +144,7 @@
             this.btnExit.Location = new System.Drawing.Point(493, 324);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
-            this.btnExit.TabIndex = 1;
+            this.btnExit.TabIndex = 6;
             this.btnExit.Text = "&Quit";
             this.myToolTip.SetToolTip(this.btnExit, "Quit the helper tool.");
             this.btnExit.UseVisualStyleBackColor = true;
